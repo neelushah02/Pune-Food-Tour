@@ -30,7 +30,7 @@ body{background-color: #fdf6e3}
     animation: fadein 2s;
 }
 
-#mapid { height: 500px; }
+#map { height: 500px; }
 
 .key-info-headings
 {
@@ -64,7 +64,7 @@ body{background-color: #fdf6e3}
 .logos{width: 5%;}
 
 .to-click
-{margin-left: 35%; margin-right: auto; font-size: 1.5em;}
+{margin-right: auto; font-size: 1.5em;}
 
 .container
 {

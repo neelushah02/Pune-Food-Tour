@@ -17,6 +17,7 @@ crossorigin=""/>
 <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
 integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
 crossorigin=""></script>
+<script src="https://cdn.jsdelivr.net/gh/Igor-Vladyka/leaflet.motion/dist/leaflet.motion.min.js"></script>
     
 </head>
     
@@ -24,9 +25,9 @@ crossorigin=""></script>
     <div class="container">
         <h1 class="name">pune food tour</h1>
         <br><br>
-        <div id = "mapid">
+        <div id = "map">
             <script>
-                var mymap = L.map('mapid').setView([18.5304, 73.8567], 13);
+                var map = L.map('map').setView([18.5304, 73.8367], 13.25);
                 var access ='pk.eyJ1IjoibmVlbHNoYWgiLCJhIjoiY2tjMXBqNnM3MXZvODJ3dGJ5YjVpem1pdyJ9.8EorwQMi5wgErUVtIkiTbw'
                 L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', 
                             {
@@ -37,9 +38,70 @@ crossorigin=""></script>
                                 zoomOffset: -1,
                                 accessToken: access
                             }
-                           ).addTo(mymap);
+                           ).addTo(map);
+                var polygon = L.polygon([
+                                                [18.553123,73.800761],
+                                                [18.5542811,	73.8012877]
+                                            ,	[18.5520509,	73.8041359]
+                                            ,	[18.5559215,	73.8089752]
+                                            ,	[18.5562467,	73.8089278]
+                                            ,	[18.5584653	,73.7923861]
+                                            ,	[18.5596842,	73.7901872]
+                                            ,	[18.561301,	73.786108]
+                                            ,	[18.5642938,	73.7785132]
+                                            ,	[18.5362816,	73.8340056]
+                                            ,	[18.5336782,	73.8354303]
+                                            ,	[18.52092,	73.8411595]
+                                             ,   [18.5189015,	73.8414579]
+                                            ,	[18.5174361,	73.8414528]
+                                            ,	[18.5160027,	73.8423246]
+                                            ,	[18.5169,	73.8442025]
+                                            ,	[18.512889,	73.845335]
+                                            ,	[18.5228159,	73.8443517]
+                                            ,	[18.5098897,	73.8326793]
+                                            ,	[18.5172957,	73.8771873]	
+                                             ,   [18.5184803,	73.8785311]
+                                            ,	[18.5145305,	73.8800009]
+                                            ,	[18.5113137,	73.8786991]
+                                            ,	[18.5278236,	73.8756014]
+                                      ]).addTo(map);
             </script>
         </div>
+        <br><br>
+        <div class="to-click">
+            <span class="key-info">
+                According to an implementation of a greedy algorithm, the fastest way to complete the food tour (as the crow flies) is described by the polygon on the map above. The route is:    
+            <br>
+            <ul>
+                <li>HOME</li>
+                <li>Chitale Bandhu: Bakarwadi</li>
+                <li>Falahaar: Jamun Shot</li>
+                <li>Durga Cafe: Cold Coffee and Anda Bhurji</li>
+                <li>Kadhai: Jalebi</li>
+                <li>Yewale Amruttulya: Tea</li>
+                <li>Sujata Mastani</li>
+                <li>Indorilaal: Kachori</li>
+                <li>Kalyan Bhel: Pani Puri</li>
+                <li>Rudra Café: Breadcrumbs</li>
+                <li>Jain Boarding: Lunch Menu</li>
+                <li>Vaishali: Cold Bournvita</li>
+                <li>Flavours Sandwich: Chocolate Toast</li>
+                <li>Cafe Goodluck: Bun Maska</li>
+                <li>Yashwant Dabeli</li>
+                <li>Sukanta: Thali</li>
+                <li>Masaledar Biryani House: Biryani</li>
+                <li>Santosh Bakery: Pattice</li>
+                <li>Bhadait Misal: Misal</li>
+                <li>Garden Vada Pav</li>
+                <li>The Place: Sizzler</li>
+                <li>Kayani Bakery: Shrewsbury Cookies</li>
+                <li>Kohinoor Restaurant: Omelette and Chai</li>
+                <li>Shiv Kailash Dairy: Special Doodh</li>
+                <li>HOME</li>
+            </ul>
+            
+            </span>
+        </div>      
     </div>
 </body>
 </html>

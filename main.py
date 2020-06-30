@@ -8,11 +8,13 @@ import math
 wb = openpyxl.load_workbook('C:/Users/neelu/OneDrive/Desktop/Computer Science/Pune Food Tour/place_data.xlsx')
 main_sheet = wb.get_sheet_by_name('Sheet0') #original sheet exported from google maps
 starting_location = main_sheet.cell(row = 1, column = 1).value
+
 #quick function for distance between two points
 def calculateDistance(x1,y1,x2,y2):
      dist = math.sqrt((x2 - x1)**2 + (y2 - y1)**2)
      return dist
 
+#given list of locations and coordinates, populates excel workbook with sheets of distances of each location from other locations
 def pre_processing(wb, main_sheet):
     for i in range(1 , 25): #len(wb['A'])+1
         first_x_location = 'B' + str(i)
@@ -24,7 +26,7 @@ def pre_processing(wb, main_sheet):
         wb.create_sheet(index = i, title = name_of_new_sheet)
         current_sheet = wb.get_sheet_by_name(name_of_new_sheet)
 
-        for j in range(1 , 25): #len(wb['A'])+1
+        for j in range(1 , 25): #len(wb['A'])+1 is another general implementation
             second_x_location = 'B' + str(j)
             second_x = main_sheet[second_x_location].value
             second_y_location = 'C' + str(j)
@@ -39,6 +41,16 @@ def pre_processing(wb, main_sheet):
             current_sheet.cell(row = j, column = 2).value = temp
     wb.save('C:/Users/neelu/OneDrive/Desktop/Computer Science/Pune Food Tour/place_data2.xlsx')
 
+#function that spits back location coordinate pair given store title
+def location_to_coordinates(wb, main_sheet, location):
+    for i in range (1,25):
+        if main_sheet.cell(row = i, column = 1).value==location:
+            pair = []
+            pair.append(main_sheet.cell(row=i, column =3).value)
+            pair.append(main_sheet.cell(row=i, column =2).value)
+            return pair
+
+#implementation of the greedy algorithm given the list of locations and coordinates
 def greedy_algorithm(wb, main_sheet):
     route = []
     indices = list(range(2, 25))
@@ -61,6 +73,15 @@ def greedy_algorithm(wb, main_sheet):
             indices.remove(index)
     route.append(starting_location)
     print(route)
+    return route
 
-#pre_processing(wb, main_sheet)
-greedy_algorithm(wb, main_sheet)
+#to be uncommented on first run: pre_processing(wb, main_sheet)
+
+#the following lines take the result of greedy_algorithm and append it to excel sheet.
+route = greedy_algorithm(wb, main_sheet)
+temp = wb.create_sheet(index=25, title="Greedy Output")
+for i in range(0,24):
+    temp.cell(row=i+1, column=1).value = route[i]
+    temp.cell(row=i+1, column=2).value = location_to_coordinates(wb, main_sheet, route[i])[0]
+    temp.cell(row=i+1, column=3).value = location_to_coordinates(wb, main_sheet, route[i])[1]
+wb.save('C:/Users/neelu/OneDrive/Desktop/Computer Science/Pune Food Tour/place_data2.xlsx')
