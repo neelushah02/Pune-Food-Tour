@@ -1,0 +1,45 @@
+<html>
+    
+<head>
+    
+<title>Pune Food Tour</title>
+    
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="styles.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Crimson Text">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">   
+<link rel="icon" href="Assets/favicon.png">
+
+    <!--Leaflet CSS and JScript!-->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+crossorigin=""/>
+<script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+crossorigin=""></script>
+    
+</head>
+    
+<body>
+    <div class="container">
+        <h1 class="name">pune food tour</h1>
+        <br><br>
+        <div id = "mapid">
+            <script>
+                var mymap = L.map('mapid').setView([18.5304, 73.8567], 13);
+                var access ='pk.eyJ1IjoibmVlbHNoYWgiLCJhIjoiY2tjMXBqNnM3MXZvODJ3dGJ5YjVpem1pdyJ9.8EorwQMi5wgErUVtIkiTbw'
+                L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', 
+                            {
+                                attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+                                maxZoom: 18,
+                                id: 'mapbox/streets-v11',
+                                tileSize: 512,
+                                zoomOffset: -1,
+                                accessToken: access
+                            }
+                           ).addTo(mymap);
+            </script>
+        </div>
+    </div>
+</body>
+</html>
