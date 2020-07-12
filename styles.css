@@ -82,6 +82,19 @@ body{background-color: #fdf6e3}
 
 a{text-decoration: none;}
 
+@media screen and (max-width: 800px) {
+    #pic{width: 250px; margin-bottom: 7.5%; margin-right: 5%}
+    .container{width: 80%}
+    .name{font-size: 3em}
+    .key-info-headings{font-size: 1.5em}
+    .key-info{font-size: 0.75em}
+    .logos{width: 1em}
+    .writings-list{font-size: 1em}
+    .writings-heading{font-size: 1.25em}
+    .footer-text{font-size: 1em}
+}
+
+
 /* Firefox < 16 */
 @-moz-keyframes fadein 
 {

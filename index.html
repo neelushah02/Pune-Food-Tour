@@ -27,7 +27,16 @@ crossorigin=""></script>
         <br><br>
         <div id = "map">
             <script>
-                var map = L.map('map').setView([18.5304, 73.8367], 13.25);
+                var x = window.matchMedia("(max-width: 800px)")
+                if(x.matches)
+                    {
+                        var map = L.map('map').setView([18.5304, 73.8367], 11.5);
+                    }
+                else
+                    {
+                        var map = L.map('map').setView([18.5304, 73.8367], 13.3);
+                    }
+                
                 var access ='pk.eyJ1IjoibmVlbHNoYWgiLCJhIjoiY2tjMXBqNnM3MXZvODJ3dGJ5YjVpem1pdyJ9.8EorwQMi5wgErUVtIkiTbw'
                 L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', 
                             {
